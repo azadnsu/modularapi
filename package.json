@@ -1,0 +1,42 @@
+{
+  "name": "modularapi",
+  "version": "1.0.0",
+  "description": "API Automation of Modular Bank Test Assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n/a.git"
+  },
+  "keywords": [
+    "qa",
+    "frisby"
+  ],
+  "jest": {
+    "reporters": [
+      "default",
+      [
+        "./node_modules/jest-html-reporter",
+        {
+          "pageTitle": "Test Execution Report",
+          "outputPath": "./report/test-report.html",
+          "dateFormat": "dd/mm/yyyy HH:MM:SS"
+        }
+      ]
+    ]
+  },
+  "author": "Azad Husen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/n/a/issues"
+  },
+  "homepage": "https://github.com/n/a#readme",
+  "devDependencies": {
+    "faker": "^5.5.3",
+    "frisby": "^2.1.3",
+    "jest": "^27.0.6",
+    "jest-html-reporter": "^3.4.1"
+  }
+}
