@@ -9,7 +9,7 @@ const Account = require("../../helpers/payload/account");
 
 describe("Modularbank sandbox API flow", () => {
     beforeAll(async () => {
-        await token.getUserToken(constants.auth_cred['username'], constants.auth_cred['password']);
+        await token.getUserToken(constants.username, constants.password);
         await token.setFrisbyHeaders();
     });
 
@@ -31,6 +31,8 @@ describe("Modularbank sandbox API flow", () => {
             .post(`${config.person_API_URL}/api/v1/persons`,
                 new Person().createCustomers(data.userEmail, idNumber,vatNumber,taxNumber,documentNumber))
             .expect('status', 200)
+            .expect("json", "errors", null)
+            .expect("json", "validationErrors", null)
             .expect("jsonTypes", {
                 data: Joi.object({
                     personId: Joi.string(),
@@ -52,6 +54,8 @@ describe("Modularbank sandbox API flow", () => {
             .post(`${config.account_API_URL}/api/v1/persons/${personId}/accounts`,
                 new Account().createAccount(personId,personName))
             .expect('status', 200)
+            .expect("json", "errors", null)
+            .expect("json", "validationErrors", null)
             .expect("jsonTypes", {
                 data: Joi.object({
                     accountId: Joi.string(),
@@ -70,6 +74,8 @@ describe("Modularbank sandbox API flow", () => {
             .post(`${config.account_API_URL}/api/v3/accounts/${accountId}/transactions`,
                 new Account().createTransaction(transactionAmount, "EUR"))
             .expect('status', 200)
+            .expect("json", "errors", null)
+            .expect("json", "validationErrors", null)
             //.inspectResponse()
             /*.expect("jsonTypes", {
                 data: Joi.object({
@@ -85,6 +91,8 @@ describe("Modularbank sandbox API flow", () => {
             .post(`${config.account_API_URL}/api/v1/accounts/${accountId}/payments/initialise`,
                 new Account().createPayment(paymentAmount, "EUR"))
             .expect('status', 200)
+            .expect("json", "errors", null)
+            .expect("json", "validationErrors", null)
             .expect("jsonTypes", {
                 data: Joi.object({
                     accountId : Joi.string().valid(accountId),
@@ -103,6 +111,8 @@ describe("Modularbank sandbox API flow", () => {
         await frisby
             .get(`${config.account_API_URL}/api/v1/accounts/${accountId}/balances`)
             .expect('status', 200)
+            .expect("json", "errors", null)
+            .expect("json", "validationErrors", null)
             .then((res) => {
                 let body = res.body;
                 body = JSON.parse(body);
@@ -119,6 +129,8 @@ describe("Modularbank sandbox API flow", () => {
         await frisby
             .post(`${config.account_API_URL}/api/v1/accounts/${accountId}/payments/${paymentId}/confirm`)
             .expect('status', 200)
+            .expect("json", "errors", null)
+            .expect("json", "validationErrors", null)
             .expect("jsonTypes", {
                 data: Joi.object({
                     paymentId: Joi.string().valid(paymentId),
@@ -134,6 +146,8 @@ describe("Modularbank sandbox API flow", () => {
         await frisby
             .get(`${config.account_API_URL}/api/v1/accounts/${accountId}/balances`)
             .expect('status', 200)
+            .expect("json", "errors", null)
+            .expect("json", "validationErrors", null)
             .then((res) => {
                 let body = res.body;
                 body = JSON.parse(body);
