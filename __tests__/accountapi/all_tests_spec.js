@@ -10,7 +10,7 @@ const Account = require("../../helpers/payload/account");
 describe("Modularbank sandbox API flow", () => {
     beforeAll(async () => {
         await token.getUserToken(constants.username, constants.password);
-        await token.setFrisbyHeaders();
+        await token.setFrisbyHeaders(token.user_token);
     });
 
     let idNumber = data.genRandomNumber(1000,4000) + "2223456A1";

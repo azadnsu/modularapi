@@ -17,7 +17,7 @@ const HelperFN = function () {
             .post(`https://auth-api.sandbox.modularbank.xyz/api/v1/employees/authorise`, {
                 body: {
                     "username": username,
-                    "password": password
+                    "password": password,
                 }
             })
             .expect('status', 200)
@@ -27,7 +27,7 @@ const HelperFN = function () {
             })
     }
 
-    this.setFrisbyHeaders = async function () {
+    this.setFrisbyHeaders = async function (token) {
         await frisby.globalSetup({
             request: {
                 headers: {
@@ -35,7 +35,7 @@ const HelperFN = function () {
                     'User-Agent': 'frisby/2.1.1 (+https://github.com/vlucas/frisby)',
                     'x-tenant-code': 'SANDBOX',
                     'x-channel-code': 'SYSTEM',
-                    'x-auth-token': this.user_token
+                    'x-auth-token': token,
                 }
             }
         });
