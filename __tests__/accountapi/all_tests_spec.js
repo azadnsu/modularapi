@@ -69,6 +69,24 @@ describe("Modularbank sandbox API flow", () => {
             })
     })
 
+    it("should GET Get Balances initial stage", async () => {
+        await frisby
+            .get(`${config.account_API_URL}/api/v1/accounts/${accountId}/balances`)
+            .expect('status', 200)
+            .expect("json", "errors", null)
+            .expect("json", "validationErrors", null)
+            .then((res) => {
+                let body = res.body;
+                body = JSON.parse(body);
+                expect(body.data[0].accountId).toBe(accountId)
+                expect(body.data[0].currencyCode).toBe("EUR")
+                expect(body.data[0].balanceAmount).toBe(0)
+                expect(body.data[0].reservedAmount).toBe(0)
+                expect(body.data[0].availableBalanceInDefaultCcy).toBe(0)
+                expect(body.data[0].availableBalanceAmount).toBe(0)
+            })
+    })
+
     it("should POST Creating transactions on that account", async () => {
         await frisby
             .post(`${config.account_API_URL}/api/v3/accounts/${accountId}/transactions`,

@@ -1,18 +1,19 @@
 {
   "name": "modularapi",
   "version": "1.0.0",
-  "description": "API Automation of Modular Bank Test Assignment",
+  "description": "Test Assignment- API Automation of Modular Bank few endpoints",
   "main": "index.js",
   "scripts": {
     "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/n/a.git"
+    "url": "git+https://github.com/azadnsu/modularapi.git"
   },
   "keywords": [
     "qa",
-    "frisby"
+    "frisby",
+    "javascript"
   ],
   "jest": {
     "reporters": [
@@ -30,9 +31,9 @@
   "author": "Azad Husen",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/n/a/issues"
+    "url": "https://github.com/azadnsu/modularapi/issues"
   },
-  "homepage": "https://github.com/n/a#readme",
+  "homepage": "https://github.com/azadnsu/modularapi/#readme",
   "devDependencies": {
     "faker": "^5.5.3",
     "frisby": "^2.1.3",

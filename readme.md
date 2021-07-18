@@ -4,10 +4,10 @@ Test Task
 # Requirements
 - node (version > 14 ) on your machine and should be set to PATH
 - npm
-- frisby
+- Frisby
 - Jest
 - Jest HTML reporter
-- Code Editor: visual studio code or IntelliJ IDEA
+- Code Editor: Visual studio code or IntelliJ IDEA
 
 # Install Dependencies
 - npm install
@@ -16,4 +16,4 @@ Test Task
 - While you are in project folder in your terminal, run `Jest` 
 
 # Reports
-- After successful run, you can access report in report folder
+- After successful run, you can access HTML report in report folder
