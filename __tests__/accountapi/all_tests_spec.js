@@ -18,7 +18,8 @@ describe("Modularbank sandbox API flow", () => {
     let taxNumber = data.genRandomNumber(1000,4000) + "445678901";
     let documentNumber = data.genRandomNumber(1000,4000) + "R45M1P72";
     let transactionAmount = data.genRandomNumber(300,400);
-    let actualTransactionAmount = transactionAmount - 0.01; // Why 0.01 is getting deducted from the the transaction amount?
+    let cardTopUpFee = 0.01;
+    let actualTransactionAmount = transactionAmount - cardTopUpFee;
     let personName = "QA Tester";
     let paymentAmount = data.genRandomNumber(10,100);
     let personId = "";
@@ -101,7 +102,7 @@ describe("Modularbank sandbox API flow", () => {
                     initialBalanceAmount: Joi.number().valid(transactionAmount)
                 }).required()
             }) */
-            //Why two transactions for one entry? It should be one as far I understand.
+            //Why two transactions for one entry? Okay, I understand card topup fees is counted as a transaction as well.
     })
 
     it("should POST Create payment", async () => {
